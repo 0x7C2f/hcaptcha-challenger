@@ -6,6 +6,7 @@
 import time
 import typing
 
+
 from selenium.common.exceptions import (
     ElementNotInteractableException,
     ElementClickInterceptedException,
@@ -22,6 +23,25 @@ from hcaptcha_challenger.exceptions import ChallengePassed
 email = "cw_2049080@outlook.com"
 country = "United States"
 headless = False
+NO_OF_TABS = 1;
+DELAY = 160;
+ENABLE_RECAPTCHA_FAUCET = False;
+ENABLE_HCAPTCHA_FAUCET = True;
+CLOSE_ALL_OTHER_WINDOWS = True;
+FAUCETPAY_EMAIL = "cw_2049080@outlook.com"
+bitcoin = "17SnGheZZTzBoKY6J1GWPfZb1Ny7ZP6yE4"
+binance = "0xEBe0A4e8e46bcE0A31095e295b2c7A4308969e72"
+bitcoincash = "bitcoincash:qqalc9q5svqnh942tp824e3mqnnzcql56vczw7sqf0"
+dash = "XieKAAwx7rUAtCksqweLej22bgiegAUrjR"
+dogecoin = "D8xe499GSmF98fGaxPQpX4us333v9pf3QS"
+digibyte = "DQFYjUJjCwDKjgCHeFncHtKpBG9m9ThL9n"
+ethereum = "0xf4a7163daA3deb816E21B893ff8D159fDd4135Cf"
+feyorra = "0xf4a7163daA3deb816E21B893ff8D159fDd4135Cf"
+litecoin = "ltc1q7jvy0x6psvjyxtmvxsj0zac5vu5cncy50jf36r"
+solana = "EzSf7ydSwzXDsHPFmFBwwLwvAtBL9nxR11rcoanq8N7w"
+tron = "TY59Z46m6K1zKxauu99jQ4j2wy9kHzWn7o"
+tether = "TY59Z46m6K1zKxauu99jQ4j2wy9kHzWn7o"
+zcash = "t1PfPNL76xJc8RCv45MLNACSD3MLVeUvNkF"
 
 # Init local-side of the ModelHub
 solver.install()
@@ -57,26 +77,10 @@ def bytedance():
 
     # Replace selenium.webdriver.Chrome with CTX
     ctx = solver.get_challenge_ctx(silence=headless)
-    ctx.get("https://dashboard.hcaptcha.com/signup")
-    try:
-        # Populate test data
-        WebDriverWait(ctx, 15, ignored_exceptions=(ElementNotInteractableException,)).until(
-            EC.presence_of_element_located((By.ID, "email"))
-        ).send_keys(email)
-        WebDriverWait(ctx, 15, ignored_exceptions=(ElementNotInteractableException,)).until(
-            EC.presence_of_element_located((By.ID, "country"))
-        ).send_keys(country)
-        # Handling context validation
-        hit_challenge(ctx=ctx, challenger=challenger)
-        # Submit test data
-        WebDriverWait(ctx, 5, ignored_exceptions=(ElementClickInterceptedException,)).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[@data-cy]"))
-        ).click()
 
-        ctx.save_screenshot(f"datas/bytedance{' - headless' if headless else ''}.png")
-    finally:
-        ctx.quit()
+    ctx.get("https://shortlinksfaucet.xyz/?p=instantpayingfaucets")
 
-
+    
+    ctx.quit()
 if __name__ == "__main__":
     bytedance()

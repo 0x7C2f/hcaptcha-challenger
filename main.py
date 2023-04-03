@@ -10,7 +10,7 @@ from fire import Fire
 
 from scripts import challenge, classify, selenium
 from scripts.motion import app, motion
-from scripts.lib.settings import config
+from scripts.settings import config
 from scripts.lib import install
 
 install.do()
@@ -101,17 +101,17 @@ class Scaffold:
         )
 
     @staticmethod
-    def demo_bytedance():
+    def faucets():
         """
         signup hcaptcha dashboard
 
-        Usage: python main.py demo-bytedance
+        Usage: python main.py bytedance
         :return:
         """
         selenium.bytedance()
 
     @staticmethod
-    def demo_classify():
+    def classify():
         """
         BinaryClassification Task
 
